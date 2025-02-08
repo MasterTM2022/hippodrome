@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -9,26 +8,22 @@ class HorseTest {
 
     @Test
     void constructorGotNotNull() {
-//        assertThrows(IllegalArgumentException.class, () ->
-//                new Horse(null, 0.0));
+//        assertThrows(IllegalArgumentException.class,
+//                () -> new Horse(null, 0.0));
 //
-//        assertThrows(IllegalArgumentException.class, () ->
-//                new Horse(null, 0.0, 0.0));
+//        assertThrows(IllegalArgumentException.class,
+//                () -> new Horse(null, 0.0, 0.0));
 
 
         Throwable exception = assertThrows(
                 IllegalArgumentException.class,
-                () -> {
-                    new Horse(null, 0.0);
-                }
+                () -> new Horse(null, 0.0)
         );
         assertEquals("Name cannot be null.", exception.getMessage());
 
         exception = assertThrows(
                 IllegalArgumentException.class,
-                () -> {
-                    new Horse(null, 0.0, 0.0);
-                }
+                () -> new Horse(null, 0.0, 0.0)
         );
         assertEquals("Name cannot be null.", exception.getMessage());
 
@@ -37,26 +32,22 @@ class HorseTest {
     @ParameterizedTest
     @ValueSource(strings = {" ", " ", "", "    "})
     void constructorGotNotBlank(String strings) {
-//        assertThrows(IllegalArgumentException.class, () ->
-//                new Horse(strings, 0.0));
+//        assertThrows(IllegalArgumentException.class,
+//                () -> new Horse(strings, 0.0));
 //
-//        assertThrows(IllegalArgumentException.class, () ->
-//                new Horse(strings, 0.0, 0.0));
+//        assertThrows(IllegalArgumentException.class,
+//                () -> new Horse(strings, 0.0, 0.0));
 
 
         Throwable exception = assertThrows(
                 IllegalArgumentException.class,
-                () -> {
-                    new Horse(strings, 0.0);
-                }
+                () -> new Horse(strings, 0.0)
         );
         assertEquals("Name cannot be blank.", exception.getMessage());
 
         exception = assertThrows(
                 IllegalArgumentException.class,
-                () -> {
-                    new Horse(strings, 0.0, 0.0);
-                }
+                () -> new Horse(strings, 0.0, 0.0)
         );
         assertEquals("Name cannot be blank.", exception.getMessage());
 
@@ -64,26 +55,22 @@ class HorseTest {
 
     @Test
     void constructorGotPositiveSpeed() {
-//        assertThrows(IllegalArgumentException.class, () ->
-//                new Horse("any", -1.0));
+//        assertThrows(IllegalArgumentException.class,
+//                () -> new Horse("any", -1.0));
 //
-//        assertThrows(IllegalArgumentException.class, () ->
-//                new Horse("any", -1.0, 0.0));
+//        assertThrows(IllegalArgumentException.class,
+//                () -> new Horse("any", -1.0, 0.0));
 
 
         Throwable exception = assertThrows(
                 IllegalArgumentException.class,
-                () -> {
-                    new Horse("any", -1.0);
-                }
+                () -> new Horse("any", -1.0)
         );
         assertEquals("Speed cannot be negative.", exception.getMessage());
 
         exception = assertThrows(
                 IllegalArgumentException.class,
-                () -> {
-                    new Horse("any", -1.0, 0.0);
-                }
+                () -> new Horse("any", -1.0, 0.0)
         );
         assertEquals("Speed cannot be negative.", exception.getMessage());
 
@@ -96,9 +83,7 @@ class HorseTest {
 
         Throwable exception = assertThrows(
                 IllegalArgumentException.class,
-                () -> {
-                    new Horse("any", 1.0, -1.0);
-                }
+                () -> new Horse("any", 1.0, -1.0)
         );
         assertEquals("Distance cannot be negative.", exception.getMessage());
     }
