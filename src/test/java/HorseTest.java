@@ -135,7 +135,7 @@ class HorseTest {
         }
     }
 
-    @Test
-    void getRandomDouble() {
-    }
+//    @Test
+//    void getRandomDouble() {
+//    }
 }
