@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration status="TRACE" strict="true"
+               name="XMLConfigTest" packages="">
+    <Properties>
+        <Property name="baseDir">logs</Property>
+    </Properties>
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <Layout type="PatternLayout" pattern="%d{yyyy-MM-dd HH:mm:ss,sss} %level %c{1}: %m%n"/>
+        </Console>
+
+        <RollingFile name="rollingFile"
+                     fileName="${baseDir}/hippodrome.log"
+                     filePattern="${baseDir}/hippodrome.%d{yyyy-MM-dd}.log">
+            <Layout type="PatternLayout" pattern="%d{yyyy-MM-dd HH:mm:ss,sss} %level %c{1}: %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="0" modulate="false"/>
+            </Policies>
+
+            <DefaultRolloverStrategy>
+                <Delete basePath="${baseDir}/" maxDepth="1">
+                    <IfFileName glob="hippodrome.*.log"/>
+                    <IfLastModified age="7d"/>
+                    <TestMode>false</TestMode>
+                </Delete>
+            </DefaultRolloverStrategy>
+
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.javarush.perov.hippodrom" level="all" additivity="true">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="rollingFile"/>
+        </Logger>
+
+        <!-- Root Logger -->
+        <Root level="all">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="rollingFile"/>
+        </Root>
+    </Loggers>
+
+</Configuration>
